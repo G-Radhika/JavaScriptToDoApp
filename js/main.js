@@ -45,3 +45,4 @@ function liClick(event) {
     var newURL = splitDetails[0] + 'details.html' + '?' + 'title' + '=' + title;
     window.location.href = newURL;
 }
+

@@ -75,13 +75,12 @@ document.getElementById('detailsSave').addEventListener('click', function (event
 });
 
 function addTodoDetails(value) {
-    var todoDetailsElement = document.createElement("p");
+    var todoDetailsElement = document.createElement('li');
     var title = detailsTitle.innerHTML;
     todoDetailsElement.innerHTML = value;
     var tDetail = value;
     newTask.setTaskDetails(tDetail); //Add taskDetails to OBJ
-    //console.log("newTask.taskDetails: ",newTask.taskDetails);
-    document.getElementById('pDetails').appendChild(todoDetailsElement);//Add element
+    document.getElementById('details').appendChild(todoDetailsElement);//Add element
     localStorage.setItem(title, value); //title : details.
 };
 
@@ -96,32 +95,52 @@ function displayEndDate(eDate) {
     document.getElementById('eDate').appendChild(endDateElement);//Add element to list
 };
 
-//Check previous newTask.
-var previousDetails = localStorage.getItem("taskList");//previousDetails is an ARRAY.
-console.log("previousDetails: ", previousDetails);
-/* if(newTask.taskTitle){
-    var details = JSON.parse(localStorage.getItem(this.newTask.taskTitle));
-    console.log("details : ", details);
-    //var todoDetails = document.createElement("li");
-    //todoDetails.innerHTML = details;
-    //document.getElementById('details').appendChild(todoDetails);
-} */
-for (let i = 0; i < previousDetails.length; i++) {
-    console.log("previousDetails.length : ",previousDetails.length);
-    console.log("this.newTask.taskTitle : ",this.newTask.taskTitle);
-    var details = newTask.TaskDetails;
-    console.log("details : ", details);
-    var todoDetails = document.createElement("li");
-    todoDetails.innerHTML = details;
-    document.getElementById('details').appendChild(todoDetails);
-
- /*   var todoStartDate = newTask.taskStartDate;
-    var todoStartDate = document.createElement("li");
-    todoStartDate.innerHTML = details;
-    document.getElementById('sDate').appendChild(todoStartDate);
-
-    var todoEndDate = newTask.taskEndDate;
-    var todoEndDate = document.createElement("li");
-    todoStartDate.innerHTML = details;
-    document.getElementById('eDate').appendChild(todoEndDate);*/
+//Previous details.
+var chk = localStorage.taskList; //if taskList is empty DONT enter!
+if(chk){
+    var taskList = JSON.parse(localStorage.getItem("taskList")); //previous taskList.
+    console.log("todoTitle: ", todoTitle,"taskList: ", taskList);
+    currentToDo = String(todoTitle); 
+    var e = taskList.includes(currentToDo); //check if taaskList has current page todoTitle
+    if(e){
+        console.log("IN IF!!!");
+        var task = JSON.parse(localStorage.getItem(currentToDo));   
+        console.log(task); 
+        //previousDetails
+        var detailsElement = document.createElement('p');
+        detailsElement.innerHTML = task.taskDetails;
+        document.getElementById('details').appendChild(detailsElement);
+        //previous start date
+        var startDateElement = document.createElement('p');
+        startDateElement.innerHTML = task.taskStartDate;
+        document.getElementById('sDate').appendChild(startDateElement);
+        //previous end date
+        var endDateElement = document.createElement('p');
+        endDateElement.innerHTML = task.taskEndDate;
+        document.getElementById('eDate').appendChild(endDateElement);
+    }
+    /*for (let i = 0; i < taskList.length; i++) {
+        var e = taskList[i];
+        // should know the current details page.
+        strE = String(e);
+        console.log(strE);
+    
+        var tmp = localStorage.getItem(strE);
+        sKey = String(tmp);
+        let task = JSON.parse(sKey);
+        console.log(task.taskDetails);
+    
+        //previousDetails
+        var detailsElement = document.createElement('p');
+        detailsElement.innerHTML = task.taskDetails;
+        document.getElementById('details').appendChild(detailsElement);
+        //previous start date
+        var startDateElement = document.createElement('p');
+        startDateElement.innerHTML = task.taskStartDate;
+        document.getElementById('sDate').appendChild(startDateElement);
+        //previous end date
+        var endDateElement = document.createElement('p');
+        endDateElement.innerHTML = task.taskEndDate;
+        document.getElementById('eDate').appendChild(endDateElement);
+    }*/
 }
