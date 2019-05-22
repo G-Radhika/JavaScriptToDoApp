@@ -1,0 +1,16 @@
+Enter a todo in input box and then add it to the list of todo's
+When clicked on a task go to task details.
+pass task name as the title to task details page.
+enter task details like, {start/end time;location; text details;}
+back button to go back to home
+done button
+
+dynamically adding a page
+pass url parameters
+
+JQuery set and get URL parameters
+
+Task: start/end date, details.
+
+Task as a object. start/end date, details.
+scrolling
