@@ -18,18 +18,14 @@
     <div class="container">
         <h2 id="title"></h2>
         <textarea rows="4" cols="50" id="taskDetails" placeholder="Add additional details..."></textarea>
-        <button id="detailsSave">Save</button>
         <button id="detailsEdit">Edit</button>
         <h4>Start date</h4>
         <input id="startDate" data-provide="datepicker" width="276">
         <h4>End date</h4>
         <input id="endDate" data-provide="datepicker" width="276" /><br>
-        <button id="saveDate" >SaveDate</button>
-        
         <button id="done">Done</button>
         <button id="back">Back</button>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -39,8 +35,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
 
-
+    <script src="js/fireStoreDB.js"></script>
     <script src="js/details.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
 </body>
